@@ -9,6 +9,6 @@ before_install:
 
 script:
   - npm run build
-  - echo "$PASSWORD" | docker login -u pflqq --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t pflqq/fe-demo:latest .
   - docker push  pflqq/fe-demo:latest
