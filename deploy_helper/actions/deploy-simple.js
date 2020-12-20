@@ -21,8 +21,8 @@ module.exports = async function (option) {
       if(cp){//备份
         toast.info("开始备份远程主机文件!");
         toast.start('备份中...');
-        //202012181611718
-        const time = new Date().toLocaleString("chinese", { hour12: false }).split(/:|\/|\s/g).map(v=>v.padStart(2,"0")).join("")
+        // const time = new Date().toLocaleString("chinese", { hour12: false }).split(/:|\/|\s/g).map(v=>v.padStart(2,"0")).join("")
+        const time = new Date().toLocaleTimeString("chinese", { hour12: false }).split(/:|\/|\s/g).map(v=>v.padStart(2,"0")).join("")
         await client.exec("cp", ["-r", remote,remote+time]);
         toast.succeed('备份成功');
       }else {//删除

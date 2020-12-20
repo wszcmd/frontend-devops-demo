@@ -6,8 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "scp -r dist root@47.96.94.154:/mnt/fe-projects/fe-demo",
-    "deploy-node": "node ./deploy_helper  deploy -cp"
+
+    "deploy:rm": "ssh root@47.96.94.154 'rm -rf /mnt/fe-projects/fe-demo/dist' ",
+    "deploy:scp": "scp -r dist root@47.96.94.154:/mnt/fe-projects/fe-demo",
+    "deploy": "npm run build && npm run deploy:rm && npm run deploy:scp",
+    
+    "deploy:node": "npm run build && node ./deploy_helper  deploy -cp"
   },
   "dependencies": {
     "core-js": "^3.6.5",
